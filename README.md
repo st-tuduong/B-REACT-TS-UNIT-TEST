@@ -22,13 +22,13 @@
 - Input: []
 - Output: false
 ### Test Case 2
-- Input: ['1', '2', '3', '4', '5']
+- Input: [1]
 - Output: false
 ### Test Case 3
-- Input: ['1', '2', '3', 4, 5]
+- Input: ['1', '2', '3', '4', '5']
 - Output: false
 ### Test Case 4
-- Input: [5, 4, 3, 2, 1]
+- Input: ['1', '2', '3', 4, 5]
 - Output: false
 ### Test Case 5
 - Input: [undefined, 2, 3, 4, 5]
@@ -40,8 +40,8 @@
 - Input: [undefined, null, 3, 4, 5]
 - Output: false
 ### Test Case 8
+- Input: [5, 4, 3, 2, 1]
+- Output: false
+### Test Case 9
 - Input: [1, 2, 3, 4, 5]
 - Output: true
-### Test Case 9
-- Input: [1]
-- Output: false

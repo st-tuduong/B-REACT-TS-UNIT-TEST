@@ -17,31 +17,23 @@
 - Assert
 
 ## 3. Liệt kê tất cả các test cases mà bạn có thể nghĩ ra để kiểm tra 1 mảng có phải là mảng số tăng dần hay không
-
-### Test Case 1
-- Input: []
-- Output: false
-### Test Case 2
-- Input: [1]
-- Output: false
-### Test Case 3
-- Input: ['1', '2', '3', '4', '5']
-- Output: false
-### Test Case 4
-- Input: ['1', '2', '3', 4, 5]
-- Output: false
-### Test Case 5
-- Input: [undefined, 2, 3, 4, 5]
-- Output: false
-### Test Case 6
-- Input: [null, 2, 3, 4, 5]
-- Output: false
-### Test Case 7
-- Input: [undefined, null, 3, 4, 5]
-- Output: false
-### Test Case 8
-- Input: [5, 4, 3, 2, 1]
-- Output: false
-### Test Case 9
-- Input: [1, 2, 3, 4, 5]
-- Output: true
+| Input                  | Output |
+| -----------            | ----------- |
+| [ ]                    | False       |
+| [null]                 | False       |
+| [undefined]            | False       |
+| ['1']                  | False       |
+| [1]                    | False       |
+| [ , 1, 2]              | False       |
+| ['', 1, 2]             | False       |
+| [null, 1, 2]           | False       |
+| [undefined, 1, 2]      | False       |
+| [null, undefined, 3]   | False       |
+| ['1', null, 3]         | False       |
+| ['1', undefined, 2]    | False       |
+| ['1', null, undefined] | False       |
+| [1, 1, 2]              | False       |
+| [1, 2, 1]              | False       |
+| [2, 1, 1]              | False       |
+| [3, 2, 1]              | False       |
+| [1, 2, 3]              | True        |

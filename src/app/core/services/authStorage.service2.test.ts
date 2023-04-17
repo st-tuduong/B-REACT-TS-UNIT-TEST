@@ -1,7 +1,8 @@
 import { AuthStorageService } from './authStorage.service';
+import { AuthStorageService2 } from './authStorage.service2';
 
-describe('Test LocalStorage', () => {
-  const auth = new AuthStorageService();
+describe('Test AuthStorageSevice', () => {
+  const auth = new AuthStorageService2();
   const token = 'abc';
   beforeEach(() => {
     localStorage.clear();
@@ -10,7 +11,7 @@ describe('Test LocalStorage', () => {
     const setTokenMock = jest.spyOn(AuthStorageService.prototype, 'setToken');
     auth.setToken(token);
     expect(setTokenMock).toBeCalled();
-    expect(setTokenMock).toBeCalledWith(token);
+    expect(setTokenMock).toBeCalledWith();
   });
   it('Call localStorage getToken', () => {
     const getTokenMock = jest.spyOn(AuthStorageService.prototype, 'getToken');

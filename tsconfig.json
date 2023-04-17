@@ -28,9 +28,7 @@
       "dom"
     ]
   },
-  "include": [
-    "./src/**/*",
-  ],
+  "include": ["./src/**/*", "./src/**/*.ts", "./src/jest.config.json"],
   "exclude": [
     "dist",
     "build",

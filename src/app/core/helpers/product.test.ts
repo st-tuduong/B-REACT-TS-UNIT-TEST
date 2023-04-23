@@ -3,24 +3,42 @@ import { CartService } from './product';
 const Apple = {
   id: '1',
   name: 'Apple',
-  price: 100,
-  quantity: 1,
-  discount: 5
+  price: 10000,
+  quantity: 5,
+  discount: [
+    {
+      quantity: 1,
+      percent: 5,
+    },
+    {
+      quantity: 5,
+      percent: 10,
+    },
+  ],
 };
 const Banana = {
   id: '2',
   name: 'Banana',
-  price: 100,
+  price: 15000,
   quantity: 1,
-  discount: 5
+  discount: [
+    {
+      quantity: 1,
+      percent: 5,
+    },
+    {
+      quantity: 5,
+      percent: 10,
+    },
+  ],
 };
 
 describe('Test CRUD Product', () => {
-  describe('Add product', () => {
+  describe('When add product', () => {
     const cart = new CartService([]);
     cart.addProduct(Apple);
     cart.addProduct(Banana);
-    it('List Product have Apple, Banana', () => {
+    it('List Product should have Apple, Banana', () => {
       expect(cart.listProduct).toHaveLength(2);
     });
     it('When Add Product, List Product will contain Apple', () => {
@@ -47,12 +65,10 @@ describe('Test CRUD Product', () => {
     cart.removeProduct('1');
     cart.removeProduct('2');
     it('Remove Apple Success', () => {
-      cart.getListProduct();
-      expect(cart.listProduct).not.toMatchObject(Apple);
+      expect(cart.getListProduct()).not.toMatchObject(Apple);
     });
     it('Remove Banana Success', () => {
-      cart.getListProduct();
-      expect(cart.listProduct).not.toMatchObject(Banana);
+      expect(cart.getListProduct()).not.toMatchObject(Banana);
     });
   });
 
@@ -62,33 +78,48 @@ describe('Test CRUD Product', () => {
       name: 'Apple Update',
       price: 100,
       quantity: 2,
-      discount: 10
+      discount: [
+        {
+          quantity: 1,
+          percent: 5,
+        },
+        {
+          quantity: 9,
+          percent: 10,
+        },
+      ],
     };
     const BananaUpdate = {
       id: '2',
       name: 'Banana Update',
       price: 100,
       quantity: 2,
-      discount: 10
+      discount: [
+        {
+          quantity: 2,
+          percent: 10,
+        },
+        {
+          quantity: 8,
+          percent: 10,
+        },
+      ],
     };
     const cart = new CartService([Apple, Banana]);
     cart.updateProduct(AppleUpdate);
     cart.updateProduct(BananaUpdate);
     it('Apple Product is update', () => {
-      cart.getListProduct();
-      expect(cart.listProduct).toContain(AppleUpdate);
+      expect(cart.getListProduct()).toContain(AppleUpdate);
     });
     it('Banana Product is update', () => {
-      cart.getListProduct();
-      expect(cart.listProduct).toContain(BananaUpdate);
+      expect(cart.getListProduct()).toContain(BananaUpdate);
     });
   });
 
   describe('Get Total Price', () => {
     const cart = new CartService([Apple, Banana]);
-    cart.getTotalPrice();
     it('TotalPrice of Product', () => {
-      expect(cart.getTotalPrice()).toEqual(190);
+      expect(cart.getTotalPrice()).toEqual(59250);
     });
   });
 });

@@ -7,12 +7,17 @@ export interface Cart {
   getTotalPrice(data?: any): void;
 }
 
+type Discount = {
+  quantity: number;
+  percent: number;
+}
+
 export type Product = {
   id: string;
   name: string;
   price: number;
   quantity: number;
-  discount: number;
+  discount: Discount[];
 };
 
 export class CartService implements Cart {
@@ -48,11 +53,21 @@ export class CartService implements Cart {
     });
   }
 
+  getDisCount(product: Product) {
+    let discount = 0;
+    product.discount.forEach(item => {
+      if (product.quantity >= item.quantity) {
+        discount = item.percent;
+      }
+    });
+    return discount;
+  }
+
   getTotalPrice() {
     return this.listProduct.reduce((sum, product: Product) => {
       return (
         sum +
-        (product.price * product.quantity * (100 - product.discount)) / 100
+        (product.price * product.quantity * (100 - this.getDisCount(product))) / 100
       );
     }, 0);
   }

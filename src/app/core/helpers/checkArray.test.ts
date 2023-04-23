@@ -1,60 +1,67 @@
 import { checkArray } from './checkArray';
 
-describe('Should be false', () => {
-  it('Case empty array', () => {
+describe('When input is less than 2', () => {
+  it('Should be is empty', () => {
     expect(checkArray([])).toBe(false);
   });
-  it('Case array have one element', () => {
+  it('Should be is one element', () => {
     expect(checkArray([1])).toBe(false);
   });
-  it('Case array have one element is Null', () => {
+});
+
+describe('When input is not array', () => {
+  it('Should be is null', () => {
     expect(checkArray([null])).toBe(false);
   });
-  it('Case array have one element is Undefined', () => {
+  it('Should be is undefined', () => {
     expect(checkArray([undefined])).toBe(false);
   });
-  it('Case array have one element is String', () => {
+  it('Should be is string', () => {
     expect(checkArray(['1'])).toBe(false);
   });
-  it('Case have String empty in array', () => {
+  it('Should be is object', () => {
+    expect(checkArray({})).toBe(false);
+  });
+});
+
+describe('When input is greater than or equal to two element and have element is not number', () => {
+  it('Should be is string', () => {
     expect(checkArray(['', 1, 2])).toBe(false);
   });
-  it('Case have Null in array', () => {
+  it('Should be is null', () => {
     expect(checkArray([null, 1, 2])).toBe(false);
   });
-  it('Case have Undefined in array', () => {
+  it('Should be is undefined', () => {
     expect(checkArray([undefined, 1, 2])).toBe(false);
   });
-  it('Case have Null and Undefined in array', () => {
+  it('Should be is null and undefined', () => {
     expect(checkArray([null, undefined, 3])).toBe(false);
   });
-  it('Case have String and Null in array', () => {
+  it('Should be is string and null', () => {
     expect(checkArray(['1', null, 3])).toBe(false);
   });
-  it('Case have String and Undefined in array', () => {
+  it('Should be is string and undefined', () => {
     expect(checkArray(['1', undefined, 2])).toBe(false);
   });
-  it('Case have String, Null and Undefined in array', () => {
+  it('Should be is string, null and undefined', () => {
     expect(checkArray(['1', null, undefined])).toBe(false);
   });
-  it('Case have String, Null and Undefined in array', () => {
-    expect(checkArray(['1', null, undefined])).toBe(false);
+  it('Should be is array', () => {
+    expect(checkArray([[], 1, 2])).toBe(false);
   });
-  it('Case have number is duplicate in first array', () => {
-    expect(checkArray([1, 1, 2])).toBe(false);
-  });
-  it('Case have number is duplicate in first and last array', () => {
+});
+
+describe('When input is not increase', () => {
+  it('Should be not increase', () => {
     expect(checkArray([1, 2, 1])).toBe(false);
-  });
-  it('Case have number is duplicate in last array', () => {
     expect(checkArray([2, 1, 1])).toBe(false);
-  });
-  it('Case array is Number and Ascending', () => {
     expect(checkArray([3, 2, 1])).toBe(false);
   });
 });
-describe('Should be True', () => {
-  it('Case array is Number and Ascending', () => {
+
+describe('When input is increase', () => {
+  it('Should be increase', () => {
+    expect(checkArray([1, 1, 2])).toBe(true);
     expect(checkArray([1, 2, 3])).toBe(true);
   });
 });

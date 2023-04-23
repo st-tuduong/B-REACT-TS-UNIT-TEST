@@ -20,10 +20,11 @@
 | Input                  | Output |
 | -----------            | ----------- |
 | [ ]                    | False       |
+| [1]                    | False       |
 | [null]                 | False       |
 | [undefined]            | False       |
 | ['1']                  | False       |
-| [1]                    | False       |
+| {}                     | False       |
 | [ , 1, 2]              | False       |
 | ['', 1, 2]             | False       |
 | [null, 1, 2]           | False       |
@@ -32,8 +33,9 @@
 | ['1', null, 3]         | False       |
 | ['1', undefined, 2]    | False       |
 | ['1', null, undefined] | False       |
-| [1, 1, 2]              | False       |
+| [[], 1, 2]             | False       |
 | [1, 2, 1]              | False       |
 | [2, 1, 1]              | False       |
 | [3, 2, 1]              | False       |
+| [1, 1, 2]              | True        |
 | [1, 2, 3]              | True        |
